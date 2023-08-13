@@ -1,0 +1,63 @@
+.employee__ul {
+  list-style: none;
+  display: flex;
+  width: 1314px;
+}
+
+.employee-main__list {
+  list-style: none;
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+  line-height: 41px;
+  border-bottom: 1px solid #f5f5f5;
+}
+
+.employee-main-list__fullName {
+  width: 190px;
+}
+
+.employee-main-list__status {
+  width: 77px;
+  background-color: #000;
+  color: #f5f5f5;
+  margin: 5px;
+  height: 38px;
+  border-radius: 100px;
+  display: flex;
+  align-items: center !important;
+  justify-content: center !important;
+  font-weight: 300 !important;
+}
+
+.employee-main-list__email,
+.employee-main-list__team {
+  width: 220px;
+}
+
+.employee-main-list__fullName,
+.employee-main-list__status,
+.employee-main-list__email,
+.employee-main-list__team {
+  cursor: default;
+  font-weight: 400;
+  font-size: 18px;
+  text-align: start;
+  display: flex;
+  justify-content: start;
+  align-items: center;
+}
+
+.employee-main-list__icon {
+  /* border: 1px solid red; */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 77px;
+}
+
+.pen-square__icon,
+.user-minus__icon {
+  padding: 5px;
+  cursor: pointer;
+}

@@ -1,0 +1,69 @@
+.team-header__container {
+  margin: 15px 99px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.team-header__title {
+  font-size: 24px;
+  font-weight: 300;
+  cursor: default;
+  text-shadow: rgba(0, 0, 0, 0.05) 0px 1px 2px 0px;
+}
+
+.team-header__content {
+  display: flex;
+  align-items: center;
+}
+
+.search-box__container {
+  margin-right: 30px;
+  display: flex;
+  align-items: center;
+  height: 30px;
+  cursor: pointer;
+  padding: 10px 20px;
+  background: #fff;
+  border-radius: 50px;
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1),
+    0 2px 4px -1px rgba(0, 0, 0, 0.06);
+  border: 0 solid #e2e8f0;
+}
+
+.search-box__container .employee_search_input {
+  width: 0;
+  outline: none;
+  border: none;
+  font-weight: 500 !important;
+  transition: all ease 3s;
+  background: transparent;
+  font-size: 16px;
+}
+
+.search-box__container:hover .employee_search_input {
+  width: 150px;
+  transition: all ease 4s;
+}
+
+.employee-add__btn {
+  align-items: center;
+  background: #ffffff;
+  border: 0 solid #e2e8f0;
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1),
+    0 2px 4px -1px rgba(0, 0, 0, 0.06);
+
+  display: inline-flex;
+  font-size: 17px;
+  font-weight: 500 !important;
+  height: 30px;
+  justify-content: center;
+  overflow-wrap: break-word;
+  padding: 0 12px;
+  width: auto;
+  border-radius: 8px;
+  cursor: pointer;
+  user-select: none;
+  -webkit-user-select: none;
+  touch-action: manipulation;
+}
