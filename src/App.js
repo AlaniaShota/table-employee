@@ -1,6 +1,5 @@
 import EmployeeProvider from "./Context/EmployeeContext";
-import TableHeader from "./Components/Header/tableHeader";
-import TableMain from "./Components/Main/tableMain";
+import Employees from "./Components/Employees/Employees";
 
 import "./App.css";
 
@@ -9,8 +8,7 @@ function App() {
     <>
       <EmployeeProvider>
         <EmployeeProvider>
-          <TableHeader />
-          <TableMain />
+          <Employees/>
         </EmployeeProvider>
       </EmployeeProvider>
     </>

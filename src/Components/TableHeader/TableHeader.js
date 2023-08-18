@@ -1,10 +1,8 @@
 import React from "react";
-import "./meanTitle.css";
-import EmployeesItem from "./EmployeesItem/employeesItem";
+import "./TableHeader.css";
 
-const MeanTitle = () => {
+const TableHeader = () => {
   return (
-    <div>
       <ul className="table-main__ul">
         <li className="table-main__list ">
           <span className="table-main-list__member text">Team member</span>
@@ -13,9 +11,7 @@ const MeanTitle = () => {
           <span className="table-main-list__team text">Teams</span>
         </li>
       </ul>
-      <EmployeesItem />
-    </div>
   );
 };
 
-export default MeanTitle;
+export default TableHeader;

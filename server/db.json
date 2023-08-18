@@ -129,6 +129,45 @@
             "status": true,
             "salary": "$3805.24",
             "teams": "Consumer Services"
+        },
+        {
+            "id": 20,
+            "first_name": "Rooney",
+            "last_name": "Vedstra",
+            "email": "rvedstraj@cloudflare.com",
+            "phone": "93(501)439-1584",
+            "country": "Afghanistan",
+            "city": "Farah",
+            "address": "00596 2nd Center",
+            "status": true,
+            "salary": "$2920.09",
+            "teams": "Health Care"
+        },
+        {
+            "id": 21,
+            "first_name": "Lennard",
+            "last_name": "Carlesso",
+            "email": "lcarlessok@globo.com",
+            "phone": "48(283)745-0886",
+            "country": "Poland",
+            "city": "Sulęcin",
+            "address": "39 Lotheville Crossing",
+            "status": false,
+            "salary": "$3913.52",
+            "teams": "n/a"
+        },
+        {
+            "id": 22,
+            "first_name": "Mercie",
+            "last_name": "Grimsditch",
+            "email": "mgrimsditchl@berkeley.edu",
+            "phone": "66(842)381-4665",
+            "country": "Thailand",
+            "city": "Samut Sakhon",
+            "address": "2 Trailsway Hill",
+            "status": true,
+            "salary": "$4862.04",
+            "teams": "Capital Goods"
         }
     ]
 }
