@@ -6,16 +6,13 @@ import { faMagnifyingGlass } from "@fortawesome/free-solid-svg-icons";
 
 const SearchEmployee = () => {
   const [employee, setEmployee] = useContext(EmployeeContext);
-  console.log(employee, '------LIST--------');
+  console.log(employee, "------LIST--------");
 
   const filterEmployee = (e) => {
-    console.log(e.target.value, 'target------------------');
+    console.log(e.target.value, "target------------------");
 
-    const firstName = employee.map((item) => item.first_name).includes()
+    const firstName = employee.map((item) => item.first_name).includes();
     console.log(firstName);
-    
-
-
   };
 
   return (
