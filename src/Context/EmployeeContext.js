@@ -1,14 +1,23 @@
-import React, { useState } from "react";
-export const EmployeeContext = React.createContext([]);
+import React, { useState, createContext, useContext } from "react";
+export const EmployeeContext = createContext();
 
 const EmployeeProvider = ({ children }) => {
-  const [employee, setEmployee] = useState([]);
+  const [employee, setEmployee] = useState({});
+  const setValues = (values) => {
+    setEmployee(
+      ...(prevData) => ({
+        ...prevData,
+        ...values,
+      })
+    );
+  };
 
   return (
-    <EmployeeContext.Provider value={[employee, setEmployee]}>
+    <EmployeeContext.Provider value={{ employee, setValues }}>
       {children}
     </EmployeeContext.Provider>
   );
 };
 
 export default EmployeeProvider;
+export const useData = () => useContext(EmployeeContext);

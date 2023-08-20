@@ -1,34 +1,39 @@
-import React, { useState } from "react";
-import { CSSTransition } from "react-transition-group";
+import React from "react";
 import AddForm from "./AddForm/addForm";
 
 import "./addEmployee.css";
+import Box from "@mui/material/Box";
+import Button from "@mui/material/Button";
+import Modal from "@mui/material/Modal";
 
-const AddEmployee = () => {
-  const [showButton, setShowButton] = useState(false);
-
-  return (
-    <>
-      <button
-        type="submit"
-        className="employee-add__btn"
-        onClick={() => setShowButton(!showButton)}
-      >
-        <span className="text">{showButton ? "hide" : "Add User"}</span>
-      </button>
-      <div>
-        <CSSTransition
-          in={showButton}
-          timeout={2000}
-          classNames="modal"
-          mountOnEnter
-          unmountOnExit
-        >
-          <AddForm className="modal" />
-        </CSSTransition>
-      </div>
-    </>
-  );
+const style = {
+  position: "absolute",
+  top: "24%",
+  left: "50%",
+  transform: "translate(-50%, -50%)",
+  width: 700,
+  bgcolor: "background.paper",
+  boxShadow: "rgba(0, 0, 0, 0.35) 0 5 15",
+  borderRadius: 8,
+  p: 4,
 };
 
+const AddEmployee = () => {
+  const [open, setOpen] = React.useState(false);
+  const handleOpen = () => setOpen(true);
+  const handleClose = () => setOpen(false);
+
+  return (
+    <div>
+      <Button onClick={handleOpen} variant="contained">
+        Add Employee
+      </Button>
+      <Modal open={open} onClose={handleClose}>
+        <Box sx={style}>
+          <AddForm />
+        </Box>
+      </Modal>
+    </div>
+  );
+};
 export default AddEmployee;

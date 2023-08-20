@@ -4,7 +4,7 @@ import { EmployeeContext } from "../../Context/EmployeeContext";
 
 const EmployeesList = () => {
   const API_URL = " http://localhost:3000/employee";
-  const [employee, setEmployee] = useContext(EmployeeContext);
+  const { employee, setEmployee } = useContext(EmployeeContext);
 
   useEffect(() => {
     const fetchItems = async () => {
@@ -22,7 +22,7 @@ const EmployeesList = () => {
 
   return (
     <div className="employee-item">
-      {employee.map(({ id, first_name, last_name, email, status, teams }) => (
+      {/* {employee.map(({ id, first_name, last_name, email, status, teams }) => (
         <EmployeeItem
           key={id}
           name={first_name}
@@ -31,7 +31,7 @@ const EmployeesList = () => {
           status={status}
           team={teams}
         />
-      ))}
+      ))} */}
     </div>
   );
 };

@@ -5,7 +5,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faMagnifyingGlass } from "@fortawesome/free-solid-svg-icons";
 
 const SearchEmployee = () => {
-  const [employee, setEmployee] = useContext(EmployeeContext);
+  const{employee, setEmployee} = useContext(EmployeeContext);
   console.log(employee, "------LIST--------");
 
   const filterEmployee = (e) => {
