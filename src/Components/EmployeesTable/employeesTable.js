@@ -3,7 +3,7 @@ import "./EmployeesTable.css";
 import TableHeader from "../TableHeader/TableHeader";
 import EmployeesList from "../EmployeesList/employeesList";
 
-const EmployeesTable= () => {
+const EmployeesTable = () => {
   return (
     <div className="table-main__container">
       <TableHeader />

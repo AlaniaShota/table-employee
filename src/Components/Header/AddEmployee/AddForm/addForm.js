@@ -4,7 +4,8 @@ import FormInput from "../../../formInput";
 import { useForm } from "react-hook-form";
 import * as yup from "yup";
 import { yupResolver } from "@hookform/resolvers/yup";
-import { Button, Checkbox, FormControlLabel, Input } from "@mui/material";
+import { Box, Button } from "@mui/material";
+import { useData } from "../../../../Context/EmployeeContext";
 
 const schema = yup.object().shape({
   firstName: yup
@@ -19,25 +20,54 @@ const schema = yup.object().shape({
     .string()
     .email("Email should have correct format")
     .required("Email is a required field"),
+  location: yup.object().shape({
+    country: yup
+      .string()
+      .matches(/^([^0-9]*)$/, "Country should not contain numbers")
+      .required("Country is a required field"),
+    city: yup
+      .string()
+      .matches(/^([^0-9]*)$/, "Country should not contain numbers")
+      .required("Country is a required field"),
+    address: yup.string().required("Country is a required field"),
+  }),
+  salary: yup
+    .number()
+    .typeError("Salary must not be empty")
+    .min(500, "Salary must not be less than 500")
+    .max(25000, "Very costly!")
+    .required("Country is a required field"),
+  teams: yup
+    .string()
+    .matches(/^([^0-9]*)$/, "Teams should not contain numbers")
+    .required("Teams is a required field"),
 });
 
 const AddForm = () => {
+  const { employee, setValues } = useData();
+
   const {
     register,
     formState: { errors, isValid },
     handleSubmit,
     reset,
-    watch,
   } = useForm({
     mode: "onBlur",
     resolver: yupResolver(schema),
+    defaultValues: {
+      firstName: employee.firstName,
+      lastName: employee.lastName,
+      email: employee.email,
+      location: employee.location,
+      salary: employee.salary,
+      teams: employee.teams,
+    },
   });
 
-  const showPhoneInput = watch("hasPhone");
-
-  const onSubmit = (data) => {
+  const onSubmit = (employee) => {
+    setValues(employee);
     reset();
-    console.log(data);
+    console.log(employee);
   };
 
   return (
@@ -76,9 +106,75 @@ const AddForm = () => {
           error={!!errors.email}
           helperText={errors?.email?.message}
         />
-        <Button type="submit" disabled={!isValid} variant="contained">
-          Add
-        </Button>
+        <FormInput
+          {...register("location.country", {
+            required: "Fill in the field",
+          })}
+          id="location.country"
+          type="text"
+          label="Country"
+          name="location.country"
+          error={!!errors.location}
+          helperText={errors?.location?.message}
+        />
+        <FormInput
+          {...register("location.city", {
+            required: "Fill in the field",
+          })}
+          id="location.city"
+          type="text"
+          label="City"
+          name="location.city"
+          error={!!errors.location}
+          helperText={errors?.location?.message}
+        />
+        <FormInput
+          {...register("location.address", {
+            required: "Fill in the field",
+          })}
+          id="location.address"
+          type="text"
+          label="Address"
+          name="location.address"
+          error={!!errors.location}
+          helperText={errors?.location?.message}
+        />
+        <FormInput
+          {...register("salary", {
+            required: "Fill in the field",
+          })}
+          id="salary"
+          type="number"
+          label="Salary"
+          name="salary"
+          error={!!errors.salary}
+          helperText={errors?.salary?.message}
+        />
+        <FormInput
+          {...register("teams", {
+            required: "Fill in the field",
+          })}
+          id="teams"
+          type="text"
+          label="Teams"
+          name="teams"
+          error={!!errors.teams}
+          helperText={errors?.teams?.message}
+        />
+        <Box
+          sx={{
+            display: "flex",
+            // flexDirection: 'column',
+            justifyContent: "center",
+            alignItems: "center",
+            marginTop: 2,
+            marginBottom: 2,
+          }}
+        >
+          <Button type="submit" disabled={!isValid} variant="contained">
+            Add
+          </Button>
+        </Box>
       </Form>
     </div>
   );

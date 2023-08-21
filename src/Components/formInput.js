@@ -5,7 +5,7 @@ const FormInput = forwardRef((props, ref) => {
   return (
     <TextField
       variant="outlined"
-      margin="normal"
+      margin= 'normal'
       inputRef={ref}
       {...props}
       fullWidth

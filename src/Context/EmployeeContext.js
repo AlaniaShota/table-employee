@@ -1,15 +1,14 @@
 import React, { useState, createContext, useContext } from "react";
-export const EmployeeContext = createContext();
+const EmployeeContext = createContext();
 
 const EmployeeProvider = ({ children }) => {
   const [employee, setEmployee] = useState({});
+
   const setValues = (values) => {
-    setEmployee(
-      ...(prevData) => ({
-        ...prevData,
-        ...values,
-      })
-    );
+    setEmployee((prevData) => ({
+      ...prevData,
+      ...values,
+    }));
   };
 
   return (
