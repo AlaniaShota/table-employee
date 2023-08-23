@@ -1,12 +1,12 @@
 import React from "react";
 import Header from "../Header/tableHeader";
-import EmployeesTable from "../EmployeesTable/employeesTable";
+import EmployeesList from "../EmployeesList/employeesList";
 
 const Employees = () => {
   return (
     <>
       <Header />
-      <EmployeesTable />
+      <EmployeesList />
     </>
   );
 };

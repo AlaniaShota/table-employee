@@ -1,11 +1,11 @@
-import React from "react";
+import React, { useContext } from "react";
 import Form from "../../../form";
 import FormInput from "../../../formInput";
 import { useForm } from "react-hook-form";
 import * as yup from "yup";
 import { yupResolver } from "@hookform/resolvers/yup";
-import { Box, Button } from "@mui/material";
-import { useData } from "../../../../Context/EmployeeContext";
+import { Box, Button, FormControl, MenuItem, Select } from "@mui/material";
+import { EmployeeContext } from "../../../../Context/EmployeeContext";
 
 const schema = yup.object().shape({
   firstName: yup
@@ -27,16 +27,17 @@ const schema = yup.object().shape({
       .required("Country is a required field"),
     city: yup
       .string()
-      .matches(/^([^0-9]*)$/, "Country should not contain numbers")
-      .required("Country is a required field"),
-    address: yup.string().required("Country is a required field"),
+      .matches(/^([^0-9]*)$/, "City should not contain numbers")
+      .required("City is a required field"),
+    address: yup.string().required("City is a required field"),
   }),
   salary: yup
     .number()
     .typeError("Salary must not be empty")
     .min(500, "Salary must not be less than 500")
     .max(25000, "Very costly!")
-    .required("Country is a required field"),
+    .required("Salary is a required field"),
+  currency: yup.string().typeError("Salary must not be empty").required("Currency is a required field"),
   teams: yup
     .string()
     .matches(/^([^0-9]*)$/, "Teams should not contain numbers")
@@ -44,7 +45,8 @@ const schema = yup.object().shape({
 });
 
 const AddForm = () => {
-  const { employee, setValues } = useData();
+  const { addNewItem } = useContext(EmployeeContext);
+  const [currency, setCurrency] = React.useState();
 
   const {
     register,
@@ -54,26 +56,22 @@ const AddForm = () => {
   } = useForm({
     mode: "onBlur",
     resolver: yupResolver(schema),
-    defaultValues: {
-      firstName: employee.firstName,
-      lastName: employee.lastName,
-      email: employee.email,
-      location: employee.location,
-      salary: employee.salary,
-      teams: employee.teams,
-    },
   });
 
-  const onSubmit = (employee) => {
-    setValues(employee);
+  const handleChange = (event) => {
+    setCurrency(event.target.value);
+  };
+
+  const onSubmit = async (data) => {
+    addNewItem(data);
     reset();
-    console.log(employee);
   };
 
   return (
     <div className="modal-content">
       <Form onSubmit={handleSubmit(onSubmit)} className="modal-form">
         <FormInput
+          sx={{ m: 1, maxWidth: 352 }}
           {...register("firstName", {
             required: "Fill in the field",
           })}
@@ -85,6 +83,7 @@ const AddForm = () => {
           helperText={errors?.firstName?.message}
         />
         <FormInput
+          sx={{ m: 1, maxWidth: 352 }}
           {...register("lastName", {
             required: "Fill in the field",
           })}
@@ -96,6 +95,7 @@ const AddForm = () => {
           helperText={errors?.lastName?.message}
         />
         <FormInput
+          sx={{ m: 1, maxWidth: 720 }}
           {...register("email", {
             required: "Fill in the field",
           })}
@@ -107,6 +107,7 @@ const AddForm = () => {
           helperText={errors?.email?.message}
         />
         <FormInput
+          sx={{ m: 1, maxWidth: 720 }}
           {...register("location.country", {
             required: "Fill in the field",
           })}
@@ -118,6 +119,7 @@ const AddForm = () => {
           helperText={errors?.location?.message}
         />
         <FormInput
+          sx={{ m: 1, maxWidth: 720 }}
           {...register("location.city", {
             required: "Fill in the field",
           })}
@@ -129,6 +131,7 @@ const AddForm = () => {
           helperText={errors?.location?.message}
         />
         <FormInput
+          sx={{ m: 1, maxWidth: 720 }}
           {...register("location.address", {
             required: "Fill in the field",
           })}
@@ -140,17 +143,36 @@ const AddForm = () => {
           helperText={errors?.location?.message}
         />
         <FormInput
+          sx={{ m: 1, maxWidth: 620 }}
           {...register("salary", {
             required: "Fill in the field",
           })}
           id="salary"
-          type="number"
+          type="text"
           label="Salary"
           name="salary"
           error={!!errors.salary}
           helperText={errors?.salary?.message}
         />
+        <FormControl sx={{ m: 1, minWidth: 80 }}>
+          <Select
+            {...register("currency", {
+              required: "Fill in the field",
+            })}
+            id="currency"
+            value={currency}
+            onChange={handleChange}
+            autoWidth
+            error={!!errors.currency}
+            helperText={errors?.currency?.message}
+          >
+            <MenuItem value="GEL">GEL</MenuItem>
+            <MenuItem value="USD">USD </MenuItem>
+            <MenuItem value="EUR">EUR</MenuItem>
+          </Select>
+        </FormControl>
         <FormInput
+          sx={{ m: 1, maxWidth: 720 }}
           {...register("teams", {
             required: "Fill in the field",
           })}
@@ -164,7 +186,6 @@ const AddForm = () => {
         <Box
           sx={{
             display: "flex",
-            // flexDirection: 'column',
             justifyContent: "center",
             alignItems: "center",
             marginTop: 2,

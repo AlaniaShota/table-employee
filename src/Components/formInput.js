@@ -9,7 +9,7 @@ const FormInput = forwardRef((props, ref) => {
       inputRef={ref}
       {...props}
       fullWidth
-    ></TextField>
+    />
   );
 });
 

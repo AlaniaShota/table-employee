@@ -1,10 +1,8 @@
-import React from "react";
+import React, { useState } from "react";
 import AddForm from "./AddForm/addForm";
 import Box from "@mui/material/Box";
 import Button from "@mui/material/Button";
 import Modal from "@mui/material/Modal";
-
-import "./addEmployee.css";
 
 const style = {
   position: "absolute",
@@ -18,7 +16,7 @@ const style = {
 };
 
 const AddEmployee = () => {
-  const [open, setOpen] = React.useState(false);
+  const [open, setOpen] = useState(false);
   const handleOpen = () => setOpen(true);
   const handleClose = () => setOpen(false);
 
